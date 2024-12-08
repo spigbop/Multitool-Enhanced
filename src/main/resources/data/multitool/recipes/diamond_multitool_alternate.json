@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond_block"
+    },
+    {
+      "item": "multitool:multitool_handle"
+    }
+  ],
+  "result": {
+    "item": "multitool:diamond_multitool"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:gold_pickaxe"
+    },
+    {
+      "item": "minecraft:gold_axe"
+    },
+    {
+      "item": "minecraft:gold_shovel"
+    },
+    {
+      "item": "minecraft:gold_hoe"
+    },
+    {
+      "item": "multitool:multitool_handle"
+    }
+  ],
+  "result": {
+    "item": "multitool:gold_multitool"
+  }
+}
