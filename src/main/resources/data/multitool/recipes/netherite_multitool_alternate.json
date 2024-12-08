@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
   "ingredients": [
     {
       "item": "minecraft:netherite_block"
@@ -9,6 +10,7 @@
     }
   ],
   "result": {
-    "item": "multitool:netherite_multitool"
+    "count": 1,
+    "id": "multitool:netherite_multitool"
   }
 }

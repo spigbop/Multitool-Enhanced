@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
   "ingredients": [
     {
       "item": "minecraft:gold_block"
@@ -9,6 +10,7 @@
     }
   ],
   "result": {
-    "item": "multitool:gold_multitool"
+    "count": 1,
+    "id": "multitool:gold_multitool"
   }
 }

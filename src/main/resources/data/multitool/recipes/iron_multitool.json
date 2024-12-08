@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
   "ingredients": [
     {
       "item": "minecraft:iron_pickaxe"
@@ -18,6 +19,7 @@
     }
   ],
   "result": {
-    "item": "multitool:iron_multitool"
+    "count": 1,
+    "id": "multitool:iron_multitool"
   }
 }

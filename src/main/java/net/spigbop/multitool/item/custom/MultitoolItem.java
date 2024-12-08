@@ -6,6 +6,7 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityPose;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -16,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
+import net.minecraft.world.event.GameEvent;
 import net.spigbop.multitool.block.MultitoolBlockTags;
 
 import javax.swing.*;
@@ -29,8 +31,8 @@ public class MultitoolItem extends MiningToolItem {
     protected static final Map<Block, Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>>> TILLING_ACTIONS = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Pair.of(HoeItem::canTillFarmland, HoeItem.createTillAction(Blocks.FARMLAND.getDefaultState())), Blocks.DIRT_PATH, Pair.of(HoeItem::canTillFarmland, HoeItem.createTillAction(Blocks.FARMLAND.getDefaultState())), Blocks.DIRT, Pair.of(HoeItem::canTillFarmland, HoeItem.createTillAction(Blocks.FARMLAND.getDefaultState())), Blocks.COARSE_DIRT, Pair.of(HoeItem::canTillFarmland, HoeItem.createTillAction(Blocks.DIRT.getDefaultState())), Blocks.ROOTED_DIRT, Pair.of(itemUsageContext -> true, HoeItem.createTillAndDropAction(Blocks.DIRT.getDefaultState(), Items.HANGING_ROOTS))));
     protected static final Map<Block, BlockState> PATH_STATES = Maps.newHashMap(new ImmutableMap.Builder<Block, BlockState>().put(Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.DIRT, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.PODZOL, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.MYCELIUM, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.getDefaultState()).build());
 
-    public MultitoolItem(ToolMaterial material, int attackDamage, float attackSpeed, Item.Settings settings) {
-        super(attackDamage, attackSpeed, material, MultitoolBlockTags.MULTITOOL_BREAKABLE, settings);
+    public MultitoolItem(ToolMaterial material, Item.Settings settings) {
+        super(material, MultitoolBlockTags.MULTITOOL_BREAKABLE, settings);
     }
 
     @Override
@@ -55,11 +57,11 @@ public class MultitoolItem extends MiningToolItem {
             actionOptional = strippedOptional;
         } else if (deoxidationOptional.isPresent()) {
             world.playSound(playerEntity, blockPos, SoundEvents.ITEM_AXE_SCRAPE, SoundCategory.BLOCKS, 1.0f, 1.0f);
-            world.syncWorldEvent(playerEntity, WorldEvents.BLOCK_SCRAPED, blockPos, 0);
+            world.syncWorldEvent(playerEntity, 3005, blockPos, 0);
             actionOptional = deoxidationOptional;
         } else if (unwaxOptional.isPresent()) {
             world.playSound(playerEntity, blockPos, SoundEvents.ITEM_AXE_WAX_OFF, SoundCategory.BLOCKS, 1.0f, 1.0f);
-            world.syncWorldEvent(playerEntity, WorldEvents.WAX_REMOVED, blockPos, 0);
+            world.syncWorldEvent(playerEntity, 3004, blockPos, 0);
             actionOptional = unwaxOptional;
         }
 
@@ -69,7 +71,7 @@ public class MultitoolItem extends MiningToolItem {
             }
             world.setBlockState(blockPos, actionOptional.get(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
             if (playerEntity != null) {
-                itemStack.damage(1, playerEntity, p -> p.sendToolBreakStatus(context.getHand()));
+                itemStack.damage(1, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
             }
             return ActionResult.success(world.isClient);
         }
@@ -91,7 +93,7 @@ public class MultitoolItem extends MiningToolItem {
                 world.playSound(playerEntity, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 if (!world.isClient) {
                     consumer.accept(context);
-                    context.getStack().damage(1, playerEntity, p -> p.sendToolBreakStatus(context.getHand()));
+                    context.getStack().damage(1, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
                 }
                 return ActionResult.success(world.isClient);
             }
@@ -114,7 +116,8 @@ public class MultitoolItem extends MiningToolItem {
                 if (blockState3 != null) {
                     if (!world.isClient) {
                         world.setBlockState(blockPos, blockState3, Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
-                        context.getStack().damage(1, playerEntity, p -> p.sendToolBreakStatus(context.getHand()));
+                        world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(playerEntity, blockState3));
+                        context.getStack().damage(1, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
                     }
                     return ActionResult.success(world.isClient);
                 }

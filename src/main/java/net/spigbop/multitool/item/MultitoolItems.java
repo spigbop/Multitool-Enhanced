@@ -1,6 +1,5 @@
 package net.spigbop.multitool.item;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -12,21 +11,21 @@ public class MultitoolItems {
 
     // Tools
     public static final Item IRON_MULTITOOL = registerItem("iron_multitool",
-            new MultitoolItem(MultitoolToolMaterials.IRON, 1, -2.8f,
-                    new FabricItemSettings()));
+            new MultitoolItem(MultitoolToolMaterials.IRON,
+                    new Item.Settings()));
     public static final Item GOLD_MULTITOOL = registerItem("gold_multitool",
-            new MultitoolItem(MultitoolToolMaterials.GOLD, 1, -2.8f,
-                    new FabricItemSettings()));
+            new MultitoolItem(MultitoolToolMaterials.GOLD,
+                    new Item.Settings()));
     public static final Item DIAMOND_MULTITOOL = registerItem("diamond_multitool",
-            new MultitoolItem(MultitoolToolMaterials.DIAMOND, 1, -2.8f,
-                    new FabricItemSettings()));
+            new MultitoolItem(MultitoolToolMaterials.DIAMOND,
+                    new Item.Settings()));
     public static final Item NETHERITE_MULTITOOL = registerItem("netherite_multitool",
-            new MultitoolItem(MultitoolToolMaterials.NETHERITE, 1, -2.8f,
-                    new FabricItemSettings().fireproof()));
+            new MultitoolItem(MultitoolToolMaterials.NETHERITE,
+                    new Item.Settings().fireproof()));
 
     // Materials
     public static final Item MULTITOOL_HANDLE = registerItem("multitool_handle",
-            new Item(new FabricItemSettings()));
+            new Item(new Item.Settings()));
 
 
     private static Item registerItem(String name, Item item) {

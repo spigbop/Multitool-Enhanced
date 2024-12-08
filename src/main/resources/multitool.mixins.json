@@ -4,9 +4,7 @@
   "package": "net.spigbop.multitool.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-  ],
-  "client": [
-    "ExampleMixin"
+    "MultitoolMixin"
   ],
   "injectors": {
     "defaultRequire": 1
