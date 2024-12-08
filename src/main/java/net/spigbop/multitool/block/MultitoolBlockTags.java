@@ -7,5 +7,5 @@ import net.minecraft.util.Identifier;
 import net.spigbop.multitool.Multitool;
 
 public class MultitoolBlockTags {
-    public static final TagKey<Block> MULTITOOL_BREAKABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(Multitool.MOD_ID, "multitool_breakable"));
+    public static final TagKey<Block> MULTITOOL_BREAKABLE = TagKey.of(RegistryKeys.BLOCK, Identifier.of(Multitool.MOD_ID, "multitool_breakable"));
 }

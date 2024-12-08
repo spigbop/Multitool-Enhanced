@@ -2,12 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    {
-      "item": "minecraft:iron_block"
-    },
-    {
-      "item": "multitool:multitool_handle"
-    }
+    "minecraft:iron_pickaxe",
+    "minecraft:iron_axe",
+    "minecraft:iron_shovel",
+    "minecraft:iron_hoe",
+    "multitool:multitool_handle"
   ],
   "result": {
     "count": 1,

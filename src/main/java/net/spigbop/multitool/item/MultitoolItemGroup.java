@@ -15,7 +15,7 @@ public class MultitoolItemGroup {
             .displayName(Text.translatable("itemGroup.multitool.multitools"))
             .entries(((displayContext, entries) -> {
                 entries.add(MultitoolItems.IRON_MULTITOOL);
-                entries.add(MultitoolItems.GOLD_MULTITOOL);
+                entries.add(MultitoolItems.GOLDEN_MULTITOOL);
                 entries.add(MultitoolItems.DIAMOND_MULTITOOL);
                 entries.add(MultitoolItems.NETHERITE_MULTITOOL);
                 entries.add(MultitoolItems.MULTITOOL_HANDLE);
@@ -23,6 +23,6 @@ public class MultitoolItemGroup {
             .build();
 
     public static void registerItemGroups() {
-        Registry.register(Registries.ITEM_GROUP, new Identifier(Multitool.MOD_ID, "multitools"), MULTITOOL);
+        Registry.register(Registries.ITEM_GROUP, Identifier.of(Multitool.MOD_ID, "multitools"), MULTITOOL);
     }
 }

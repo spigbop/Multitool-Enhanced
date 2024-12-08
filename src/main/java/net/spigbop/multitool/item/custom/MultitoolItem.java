@@ -20,7 +20,6 @@ import net.minecraft.world.WorldEvents;
 import net.minecraft.world.event.GameEvent;
 import net.spigbop.multitool.block.MultitoolBlockTags;
 
-import javax.swing.*;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -31,13 +30,14 @@ public class MultitoolItem extends MiningToolItem {
     protected static final Map<Block, Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>>> TILLING_ACTIONS = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Pair.of(HoeItem::canTillFarmland, HoeItem.createTillAction(Blocks.FARMLAND.getDefaultState())), Blocks.DIRT_PATH, Pair.of(HoeItem::canTillFarmland, HoeItem.createTillAction(Blocks.FARMLAND.getDefaultState())), Blocks.DIRT, Pair.of(HoeItem::canTillFarmland, HoeItem.createTillAction(Blocks.FARMLAND.getDefaultState())), Blocks.COARSE_DIRT, Pair.of(HoeItem::canTillFarmland, HoeItem.createTillAction(Blocks.DIRT.getDefaultState())), Blocks.ROOTED_DIRT, Pair.of(itemUsageContext -> true, HoeItem.createTillAndDropAction(Blocks.DIRT.getDefaultState(), Items.HANGING_ROOTS))));
     protected static final Map<Block, BlockState> PATH_STATES = Maps.newHashMap(new ImmutableMap.Builder<Block, BlockState>().put(Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.DIRT, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.PODZOL, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.MYCELIUM, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.getDefaultState()).build());
 
-    public MultitoolItem(ToolMaterial material, Item.Settings settings) {
-        super(material, MultitoolBlockTags.MULTITOOL_BREAKABLE, settings);
+    public MultitoolItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings) {
+        super(material, MultitoolBlockTags.MULTITOOL_BREAKABLE, attackDamage, attackSpeed, settings);
     }
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
+
         BlockPos blockPos = context.getBlockPos();
         PlayerEntity playerEntity = context.getPlayer();
         BlockState blockState = world.getBlockState(blockPos);
@@ -51,7 +51,6 @@ public class MultitoolItem extends MiningToolItem {
 
         Optional<BlockState> actionOptional = Optional.empty();
 
-        // Here Mojang i fixed your code.
         if (strippedOptional.isPresent()) {
             world.playSound(playerEntity, blockPos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0f, 1.0f);
             actionOptional = strippedOptional;
@@ -73,7 +72,13 @@ public class MultitoolItem extends MiningToolItem {
             if (playerEntity != null) {
                 itemStack.damage(1, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
             }
-            return ActionResult.success(world.isClient);
+
+            if(world.isClient()) {
+                return ActionResult.SUCCESS;
+            }
+            else {
+                return ActionResult.SUCCESS_SERVER;
+            }
         }
 
 
@@ -94,8 +99,11 @@ public class MultitoolItem extends MiningToolItem {
                 if (!world.isClient) {
                     consumer.accept(context);
                     context.getStack().damage(1, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
+                    return ActionResult.SUCCESS_SERVER;
                 }
-                return ActionResult.success(world.isClient);
+                else {
+                    return ActionResult.SUCCESS;
+                }
             }
         }
         else {
@@ -118,8 +126,11 @@ public class MultitoolItem extends MiningToolItem {
                         world.setBlockState(blockPos, blockState3, Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
                         world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(playerEntity, blockState3));
                         context.getStack().damage(1, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
+                        return ActionResult.SUCCESS_SERVER;
                     }
-                    return ActionResult.success(world.isClient);
+                    else {
+                        return ActionResult.SUCCESS;
+                    }
                 }
                 return ActionResult.PASS;
             }

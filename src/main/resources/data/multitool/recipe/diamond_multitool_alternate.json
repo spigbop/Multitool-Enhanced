@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    {
-      "item": "minecraft:diamond_block"
-    },
-    {
-      "item": "multitool:multitool_handle"
-    }
+    "minecraft:diamond_block",
+    "multitool:multitool_handle"
   ],
   "result": {
     "count": 1,

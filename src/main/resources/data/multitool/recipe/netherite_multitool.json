@@ -2,12 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    {
-      "item": "minecraft:netherite_block"
-    },
-    {
-      "item": "multitool:multitool_handle"
-    }
+    "minecraft:netherite_pickaxe",
+    "minecraft:netherite_axe",
+    "minecraft:netherite_shovel",
+    "minecraft:netherite_hoe",
+    "multitool:multitool_handle"
   ],
   "result": {
     "count": 1,
