@@ -3,7 +3,7 @@
   "id": "multitool",
   "version": "${version}",
 
-  "name": "Multitool Enhanced",
+  "name": "Multitools Enhanced",
   "description": "Adds a new tool to combine functions of multiple tools to occupy less space.",
   "authors": [
     "Spigbop"

@@ -1,7 +1,7 @@
 package net.spigbop.multitool;
 
 import net.fabricmc.api.ModInitializer;
-import net.spigbop.multitool.item.MultitoolItemGroup;
+import net.spigbop.multitool.item.MultitoolItemGroups;
 import net.spigbop.multitool.item.MultitoolItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,7 @@ public class Multitool implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		MultitoolItems.registerItems();
-		MultitoolItemGroup.registerItemGroups();
+		MultitoolItemGroups.registerItemGroups();
+
 	}
 }

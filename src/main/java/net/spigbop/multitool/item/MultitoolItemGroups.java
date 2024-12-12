@@ -9,7 +9,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.spigbop.multitool.Multitool;
 
-public class MultitoolItemGroup {
+public class MultitoolItemGroups {
     public static final ItemGroup MULTITOOL = FabricItemGroup.builder()
             .icon(() -> new ItemStack(MultitoolItems.DIAMOND_MULTITOOL))
             .displayName(Text.translatable("itemGroup.multitool.multitools"))
@@ -18,6 +18,7 @@ public class MultitoolItemGroup {
                 entries.add(MultitoolItems.GOLDEN_MULTITOOL);
                 entries.add(MultitoolItems.DIAMOND_MULTITOOL);
                 entries.add(MultitoolItems.NETHERITE_MULTITOOL);
+                entries.add(MultitoolItems.MULTITOOL_NETHERITE_UPGRADE);
                 entries.add(MultitoolItems.MULTITOOL_HANDLE);
             }))
             .build();

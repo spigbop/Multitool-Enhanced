@@ -14,20 +14,21 @@ public class MultitoolItems {
 
     // Tools
     public static final Item IRON_MULTITOOL = register("iron_multitool", (settings) -> {
-        return new MultitoolItem(MultitoolToolMaterials.IRON, 1.0F, -2.8F, settings);
+        return new MultitoolItem(MultitoolToolMaterials.IRON, 5.0F, -3.0F, settings);
     });
     public static final Item GOLDEN_MULTITOOL = register("golden_multitool", (settings) -> {
-        return new MultitoolItem(MultitoolToolMaterials.IRON, 1.0F, -2.8F, settings);
+        return new MultitoolItem(MultitoolToolMaterials.GOLD, 5.0F, -3.0F, settings);
     });
     public static final Item DIAMOND_MULTITOOL = register("diamond_multitool", (settings) -> {
-        return new MultitoolItem(MultitoolToolMaterials.IRON, 1.0F, -2.8F, settings);
+        return new MultitoolItem(MultitoolToolMaterials.DIAMOND, 5.0F, -3.0F, settings);
     });
     public static final Item NETHERITE_MULTITOOL = register("netherite_multitool", (settings) -> {
-        return new MultitoolItem(MultitoolToolMaterials.IRON, 1.0F, -2.8F, settings);
+        return new MultitoolItem(MultitoolToolMaterials.NETHERITE, 5.0F, -3.0F, settings);
     }, (new Item.Settings()).fireproof());
 
     // Materials
     public static final Item MULTITOOL_HANDLE = register("multitool_handle");
+    public static final Item MULTITOOL_NETHERITE_UPGRADE = register("multitool_netherite_upgrade");
 
 
     private static RegistryKey<Item> keyOf(String id) {
