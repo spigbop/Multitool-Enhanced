@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:netherite_block"
+      "item": "minecraft:gold_block"
     },
     {
       "item": "multitool:multitool_handle"
     }
   ],
   "result": {
-    "item": "multitool:netherite_multitool"
+    "item": "multitool:golden_multitool"
   }
 }

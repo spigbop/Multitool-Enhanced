@@ -11,20 +11,22 @@ public class MultitoolItems {
 
     // Tools
     public static final Item IRON_MULTITOOL = registerItem("iron_multitool",
-            new MultitoolItem(MultitoolToolMaterials.IRON, 1, -2.8f,
+            new MultitoolItem(MultitoolToolMaterials.IRON, 1F, -2.8F,
                     new FabricItemSettings().group(MultitoolItemGroup.MULTITOOL)));
-    public static final Item GOLD_MULTITOOL = registerItem("gold_multitool",
-            new MultitoolItem(MultitoolToolMaterials.GOLD, 1, -2.8f,
+    public static final Item GOLDEN_MULTITOOL = registerItem("golden_multitool",
+            new MultitoolItem(MultitoolToolMaterials.GOLD, 1F, -2.8F,
                     new FabricItemSettings().group(MultitoolItemGroup.MULTITOOL)));
     public static final Item DIAMOND_MULTITOOL = registerItem("diamond_multitool",
-            new MultitoolItem(MultitoolToolMaterials.DIAMOND, 1, -2.8f,
+            new MultitoolItem(MultitoolToolMaterials.DIAMOND, 1F, -2.8F,
                     new FabricItemSettings().group(MultitoolItemGroup.MULTITOOL)));
     public static final Item NETHERITE_MULTITOOL = registerItem("netherite_multitool",
-            new MultitoolItem(MultitoolToolMaterials.NETHERITE, 1, -2.8f,
+            new MultitoolItem(MultitoolToolMaterials.NETHERITE, 1F, -2.8F,
                     new FabricItemSettings().group(MultitoolItemGroup.MULTITOOL).fireproof()));
 
     // Materials
     public static final Item MULTITOOL_HANDLE = registerItem("multitool_handle",
+            new Item(new FabricItemSettings().group(MultitoolItemGroup.MULTITOOL)));
+    public static final Item MULTITOOL_NETHERITE_UPGRADE = registerItem("multitool_netherite_upgrade",
             new Item(new FabricItemSettings().group(MultitoolItemGroup.MULTITOOL)));
 
 

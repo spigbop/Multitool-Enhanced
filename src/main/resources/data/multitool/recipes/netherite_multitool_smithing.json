@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "multitool:diamond_multitool"
+  },
+  "addition": {
+    "item": "multitool:multitool_netherite_upgrade"
+  },
+  "result": {
+    "item": "multitool:netherite_multitool"
+  }
+}
