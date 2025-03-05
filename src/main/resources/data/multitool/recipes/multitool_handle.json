@@ -1,11 +1,13 @@
 {
-  "type": "minecraft:smithing",
-  "base": {
-    "item": "minecraft:leather"
-  },
-  "addition": {
-    "item": "minecraft:copper_ingot"
-  },
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "item": "minecraft:leather"
+    }
+  ],
   "result": {
     "item": "multitool:multitool_handle"
   }

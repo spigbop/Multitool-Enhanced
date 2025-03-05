@@ -4,13 +4,14 @@
   "version": "${version}",
 
   "name": "Multitools Enhanced",
-  "description": "Adds a new tool to combine functions of multiple tools to occupy less space.",
+  "description": "Adds a new tool type to combine functions of multiple tools to occupy less space.",
   "authors": [
     "Spigbop"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/multitool-enhanced/",
-    "sources": "https://github.com/spigbop/Multitool-Enhanced"
+    "sources": "https://github.com/spigbop/Multitool-Enhanced",
+    "issues": "https://github.com/spigbop/Multitool-Enhanced/issues"
   },
 
   "license": "MIT",
@@ -23,16 +24,12 @@
     ]
   },
   "mixins": [
-    "multitool.mixins.json"
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.6",
+    "fabricloader": ">=0.16.10",
     "fabric": "*",
-    "minecraft": "~1.18.2",
+    "minecraft": "~1.20.1",
     "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
