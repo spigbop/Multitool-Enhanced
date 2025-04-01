@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "multitools:multitool_netherite_upgrade"
+  },
+  "base": {
+    "item": "multitools:diamond_multitool"
+  },
+  "result": {
+    "item": "multitools:netherite_multitool"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

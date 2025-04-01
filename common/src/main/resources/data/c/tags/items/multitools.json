@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "multitools:iron_multitool",
+    "multitools:golden_multitool",
+    "multitools:diamond_multitool",
+    "multitools:netherite_multitool"
+  ]
+}
