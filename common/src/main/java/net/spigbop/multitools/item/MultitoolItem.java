@@ -4,9 +4,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
-import net.spigbop.multitools.Constants;
 import net.spigbop.multitools.block.ModBlockTags;
-import net.spigbop.multitools.config.ConfigProvider;
 
 public class MultitoolItem extends DiggerItem {
 
